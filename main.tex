@@ -1,0 +1,278 @@
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+\usepackage[document]{ragged2e}
+\usepackage{adjustbox}
+\usepackage{fontspec}
+\usepackage{pifont}
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
+
+% The default Latin Modern font family doesn't contain Cyrillics,
+% so load Computer Modern Unicode instead
+\setmainfont{CMU Serif}[Ligatures=TeX]
+
+\usepackage[english,russian]{babel}
+
+%%%%%%%%%%%%%
+% \setlength{\parskip}{\baselineskip}
+% \setlength{\parindent}{0pt}
+
+
+
+\author{Дарья Галимзянова}
+\title{Формальное представление естественного языка}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\textbf{1. Глубинные представления. Генеративная фонология}
+
+\textbf{1.1. Если считать глубинные представления (ГП) суффиксов такими: /i/, /no/, /go/,
+/do/, то какими должны быть глубинные представления слов ‘окно’, ‘ягода’, ‘её
+окно’, ‘её ягода’? Почему?}
+
+
+Глубнными представлениями можно считать следующие:
+
+Окно - 'bugat'\\
+Ягода - 'tugad'\\
+Ее окно - 'bugat-do'\\
+Ее ягода - 'tugad-do'
+
+Судя по всему, в языке тангале существует правило озвончения согласного аффикса после последнего звонкого звука в основе слова. Так, например, в ПП мы видим 'kuluk' и 'kulug-no', 'kulug-go' и т.д. Однако, видимо, еще существует правило не озвончать согласный перед аффиксом '-i', как мы это видим в примерах 'aduk' - 'aduk-i' и 'bugat' - 'bugat-i'. Мы руководствуемся этими правилами, чтобы обнаружить глубинное представление выше указанных слов. Поскольку ГП -- это форма слова до применения правил, 'ее окно' имеет ГП в виде 'bugat-do', а не 'bugad-do'.
+
+\textbf{1.2. Почему предложенные в п.1 ГП /go/ и /do/ кажутся более адекватными, чем /ko/
+и /to/?}
+
+Если мы будем считать суффиксы /ko/ и /to/ глубинными представлениями, то нам понадобится правило, объясняющее, что после гласной в корне (ПП 'loo-do') и после звонкой согласной (ПП 'tugad-do') аффикс озвончается.
+
+\textbf{1.3. Кажется, в тангале представлена прогрессивная и регрессивная ассимиляция по
+глухости/звонкости. Сформулируйте два необходимых правила, A и B. Используйте
+спецификации $\alpha$ voice для признака, значение которого совпадает в фокусе и в
+контексте правила.}
+
+Правило А (для регрессивного озвончения):\\
+$[-syll, +cons, -voice] \rightarrow [-syll, +cons, +voice] \_n\ $
+
+Правило B (для прогрессивного оглушения):\\
+$[-syll, +cons, +voice] ️\rightarrow [\alpha voice]/[\alpha voice]\_$
+
+\textbf{Определите порядок применения правил A и B. Почему порядок должен быть
+именно таким? Если порядок не важен, тоже напишите почему.}
+
+Порядок применения правил не важен
+
+\textbf{Приведите деривации слов bugadno и bugatko в следующем формате:}
+
+\begin{center}
+\begin{tabular}{|c c c|} 
+ \hline
+  & моё окно & твоё окно \\ [0.5ex] 
+ \hline
+ ГП & /bugat-no/ & /bugat-go/ \\ 
+ \hline
+ Правило X & bugad-no & bugat-go \\
+ \hline
+ Правило Y & bugad-no & bugat-ko \\
+ \hline
+ ПП & [bugad-no] & [bugat-ko] \\
+ \hline
+\end{tabular}
+\end{center}
+
+\textbf{1.4. Для анализа фрагмента парадигмы, приведенного выше, требуется еще одно
+правило (C). Сформулируйте это правило и приведите два примера его применения.}
+
+Правило C: \\
+$[+cons, +voice] \rightarrow [-voice]/ \_ \# $ \\
+
+Пример 1:\\
+$tugad \rightarrow tugat$ \\
+В парадигме есть слова aduk и kuluk, в которых последняя согласная не одинакова в ГП и ПП. Чтобы избавиться от этого несоответствия, мы можем предложить правило С, оглушающее последнюю согласную в конце ГП.
+
+Пример 2:\\
+$kulug \rightarrow kuluk$ \\
+
+\textbf{1.5 Определите порядок применения имеющихся правил (релевантны три правила из имеющихся четырех). Аргументируйте ваше решение. Приведите деривации слов
+‘моя соль’ и ‘твоя соль’:}
+
+Правило С из имеющихся применяется только на конце слова, все остальные модифицируют морфемы, находящиеся внутри слова. Таким образом, мы используем только правила A, B и D.
+
+\begin{center}
+\begin{tabular}{|c c c|} 
+ \hline
+  & моя соль & твоя соль \\ [0.5ex] 
+ \hline
+ ГП & /duka-no/ & /duka-ko/ \\ 
+ \hline
+ Правило B & duka-no & duka-go \\
+ \hline
+ Правило D & duk-no & duk-ko \\
+ \hline
+ Правило A & duk-no & duk-ko \\
+ \hline
+ ПП & [duk-no] & [duk-ko] \\
+ \hline
+\end{tabular}
+\end{center}
+
+\textbf{1.6*. Какое из правил можно считать «непрозрачным»? Мы имеем здесь дело с
+underapplication (=counterfeeding) или overapplication (=counterbleeding)? Поясните ваш
+ответ.}
+
+Возможно, непрозрачным может считаться правило D, так как при его отмене мы не можем применить правило А. В этом случае мы имеем дело с underapplication (=counterfeeding), то есть с нарушением следования правил.
+
+\textbf{2. Теория оптимальности: ограничения в тангале}
+
+\textbf{2.1. Как ранжированы $AGREE(CC)^{[voice]}, IDENT([voice])_{aff},  IDENT([voice])_{root}$? (Данные совместимы с двумя из шести возможных полных ранжирований
+трех ограничений). Покажите, как выбирается оптимальное ПП с помощью
+таблички (tableau), в которой для ГП /bugatgo/ соревнуются потенциальные
+ПП [bugatgo], [bugadgo] и [bugatko].}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ /bugat-go/ & $AGREE(CC)^{[voice]}$ & $IDENT([voice])_{aff}$ & $IDENT([voice])_{root}$ \\ [0.5ex] 
+ \hline
+ bugat-go & * & & \\ 
+ \hline
+ bugad-go & & * & \\
+ \hline
+ \ding{228} bugat-ko & & & * \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+
+\textbf{2.2. Для каждого из неправильных ранжирований этих трех ограничений укажите
+кандидата, который будет при таком ранжировании побеждать.}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ /bugat-go/ & $IDENT([voice])_{aff}$ & $IDENT([voice])_{root}$ & $AGREE(CC)^{[voice]}$ \\ [0.5ex] 
+ \hline
+ \ding{228} bugat-go & & & * \\ 
+ \hline
+ bugad-go & & * & \\
+ \hline
+ bugat-ko & * & & \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ /bugat-go/ & $IDENT([voice])_{root}$ & $AGREE(CC)^{[voice]}$ & $IDENT([voice])_{aff}$ \\ [0.5ex] 
+ \hline
+ bugat-go & & * & \\ 
+ \hline
+ bugad-go & * & & \\
+ \hline
+ \ding{228} bugat-ko & & & * \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ /bugat-go/ & $IDENT([voice])_{aff}$ & $AGREE(CC)^{[voice]}$ & $IDENT([voice])_{root}$ \\ [0.5ex] 
+ \hline
+ bugat-go & & * & \\ 
+ \hline
+ \ding{228} bugad-go & & & * \\
+ \hline
+ bugat-ko & * & & \\
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ /bugat-go/ & $IDENT([voice])_{root}$ & $IDENT([voice])_{aff}$ & $AGREE(CC)^{[voice]}$ \\ [0.5ex] 
+ \hline
+ \ding{228} bugat-go & & & * \\ 
+ \hline
+ bugad-go & * & & \\
+ \hline
+ bugat-ko & & * & \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ /bugat-go/ & $AGREE(CC)^{[voice]}$ & $IDENT([voice])_{aff}$ & $IDENT([voice])_{root}$ \\ [0.5ex] 
+ \hline
+ bugat-go & * & & \\ 
+ \hline
+ \ding{228} bugad-go & & & * \\
+ \hline
+ bugat-ko & & * & \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+\textbf{2.3. Почему присоединение суффикса, начинающегося на сонорный n, не приводит
+к оглушению самого n, а вызывает регрессивную ассимиляцию последнего
+согласного корня? Здесь может помочь еще одно ограничение маркированности,
+некое ограничение X.}
+
+Присоединение суффикса, начинаюегося на сонорный n, не приводит к его оглушению, потому что у сонорных нет парных глухих звуков.
+
+Ограничение X: \\
+$[–syll, +cons, –voice] → [\alpha voice] / \_ [–syll, +cons, +son, \alpha voice]$
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+ /bugat-no/ & $AG(CC)^{[voice]}$ & $AG(CC)^{[+voice]}$ & $ID([voice])_{aff}$ &  $ID([voice])_{root}$ \\ [0.5ex] 
+ \hline
+ bugat-no & * & & & \\ 
+ \hline
+ \ding{228} bugad-no & & & & * \\
+ \hline
+ bugat-no & & * & * & \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+\textbf{2.4. Объясните, почему для /bugatno/ в качестве оптимального ПП не выбирается
+[bugatto], встроив в иерархию еще одно ограничение.
+Опишите это ограничение: это ограничение маркированности или верности? что
+оно запрещает? Как именно оно встраивается в имеющуюся на данный момент
+иерархию? Проиллюстрируйте итоговое ранжирование с помощью таблички с ГП
+/bugatno/ и кандидатами [bugatno], [bugadno], [bugatNo] и [bugatto].}
+
+
+
+\begin{tabular}{|c|c|c|c|c|c|}
+ \hline
+ /bugat-no/ & $AG(CC)^{[voice]}$ & $AG(CC)^{[+voi]}$ & $ID([voi])_{aff}$ &  $ID([voice])_{root}$ & $ID([son])_{aff}$ \\ [0.5ex] 
+ \hline
+ bugat-no & & * & & & \\ 
+ \hline
+ \ding{228} bugad-no & & & & * & \\
+ \hline
+ bugat-no & & * & * & & \\
+ \hline
+ bugat-to & & & * & & * \\
+ \hline
+\end{tabular}
+
+\end{document}
+
